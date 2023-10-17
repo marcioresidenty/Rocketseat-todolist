@@ -26,8 +26,8 @@ public class filterTaskAuth extends OncePerRequestFilter{
 
 
                 var servletPath = request.getServletPath();
-
-                if (servletPath.equals("/tasks/")) {
+               // System.out.println("PATH "+ servletPath);
+                if (servletPath.startsWith("/tasks/")) {
 
                
                 // pega a autenticação (usuário e senha
@@ -56,6 +56,7 @@ public class filterTaskAuth extends OncePerRequestFilter{
                         // valida senha)
                        var passwordVerify =  BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                       if(passwordVerify.verified) {
+                        request.setAttribute("idUser", user.getId());
                             filterChain.doFilter(request, response);
                       } else {
                         response.sendError(401);

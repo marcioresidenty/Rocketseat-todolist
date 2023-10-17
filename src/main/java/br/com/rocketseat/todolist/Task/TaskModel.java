@@ -15,7 +15,6 @@ import lombok.Data;
 @Entity(name = "tb_tasks")
 public class TaskModel {
 
-
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
@@ -27,12 +26,9 @@ public class TaskModel {
     private LocalDateTime endAt;
     private String priority;
 
-
-    private UUID isUser;
-
+  
+    private UUID idUser;
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-   
- 
 }
